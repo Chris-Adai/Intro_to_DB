@@ -1,3 +1,4 @@
+'''
 import mysql.connector
 from mysql.connector import Error
 
@@ -26,3 +27,27 @@ def create_database():
 
 if __name__ == "__main__":
     create_database()
+
+'''
+
+
+import mysql.connector
+
+try:
+    connection = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="yourpassword",
+        database="alx_book_store"
+    )
+    cursor = connection.cursor()
+    # Your SQL operations here...
+
+except mysql.connector.Error as err:
+    print(f"Error: {err}")
+
+finally:
+    if 'connection' in locals() and connection.is_connected():
+        cursor.close()
+        connection.close()
+
